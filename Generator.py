@@ -8,7 +8,7 @@ class Generator(torch.nn.Module):
         self.dense_2 = nn.Sequential(nn.Linear(128, 784), nn.Sigmoid())
         for m in self.modules():
             if isinstance(m, nn.Linear):
-                nn.init.normal_(m.weight, std=0.01)
+                nn.init.xavier_uniform_(m.weight)
                 if m.bias is not None:
                     nn.init.constant_(m.bias, 0)
             
